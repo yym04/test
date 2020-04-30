@@ -96,7 +96,13 @@ html {
     visibility: hidden;
     height: 0
 }
+
+/*样式重置*/
+body,p,h1,h2,h3,h4,h5,h6,dl,dd{margin:0;font-size:12px;font-family:$font-family-main;}
+ol,ul{list-style:none;padding:0;margin:0;}
 input,button,select,textarea{outline:none}
+img{border:none;}
+a{text-decoration:none;}
 
 /* page change */
 $--transition-time: 350ms;
@@ -149,4 +155,27 @@ $--transition-time: 350ms;
 .slide-left-leave-active, .slide-right-enter {
   -webkit-transform: translate(-100%, 0);
   transform: translate(-100%, 0);
+}
+
+.main-form{
+  padding: 0 27px;
+}
+
+/*表格标题文字*/
+.form-title{
+  text-align: left;
+  font-weight: bold;
+  font-size: 22px;
+  color: #222222;
+  margin-top: 16px;
+  @include line-height(31px,31px)
+}
+
+/*表格副标题文字*/
+.form-title-sub{
+  color: $dark-gray;
+  font-size: 12px;
+  @include line-height(16.5px,16.5px);
+  margin-top: 6px;
+  text-align: left;
 }

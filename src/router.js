@@ -1,19 +1,31 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+// import Home from './views/Home.vue'
+import Index from './views/Index'
+import Certificate from './views/Certificate'
 import store from 'store/index'
 Vue.use(Router)
 const router = new Router({
     routes: [
         {
             path: '/',
-            name: 'home',
-            component: Home,
-            meta: {
-                auth: false, // 是否需要登录
-                keepAlive: true // 是否缓存组件
-            }
+            name: 'index',
+            component: Index
         },
+        {
+            path: '/certificate',
+            name: 'certificate',
+            component: Certificate
+        },
+        // {
+        //     path: '/',
+        //     name: 'home',
+        //     component: Home,
+        //     meta: {
+        //         auth: false, // 是否需要登录
+        //         keepAlive: true // 是否缓存组件
+        //     }
+        // },
         {
             path: '/about',
             name: 'about',

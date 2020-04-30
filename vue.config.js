@@ -121,7 +121,7 @@ module.exports = {
                         unitToConvert: 'px', // 需要转换的单位，默认为"px"
                         viewportWidth: 375, // 设计稿的视口宽度
                         unitPrecision: 5, // 单位转换后保留的精度
-                        propList: ['*', '!font'], //  能转化为vw的属性列表,将不转换font-size以及font-weight等属性
+                        propList: ['*'], //  能转化为vw的属性列表,将不转换font-size以及font-weight等属性
                         viewportUnit: 'vw', // 希望使用的视口单位
                         // fontViewportUnit: 'vw', // 字体使用的视口单位
                         selectorBlackList: [], // 需要忽略的CSS选择器，不会转为视口单位，使用原有的px等单位
@@ -145,7 +145,7 @@ module.exports = {
     productionSourceMap: false,
     devServer: {
         open: true, // 启动服务后是否打开浏览器
-        host: '127.0.0.1',
+        host: '192.168.0.197',
         port: 8088, // 服务端口
         https: false,
         hotOnly: false,
