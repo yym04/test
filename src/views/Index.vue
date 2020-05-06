@@ -29,7 +29,7 @@ export default {
             width: 319px;
             height: 66px;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             @include bg_image("../assets/pictures/sign_nor");
             font-size: 18px;
             font-family: "阿里巴巴普惠体";

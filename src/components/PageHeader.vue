@@ -39,6 +39,7 @@ export default {
             font-size: 16px;
             font-family: "苹方-简";
             font-weight: bold;
+            color: #000000;
             @include line-height(44px,44px)
         }
     }

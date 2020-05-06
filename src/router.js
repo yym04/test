@@ -3,6 +3,8 @@ import Router from 'vue-router'
 // import Home from './views/Home.vue'
 import Index from './views/Index'
 import Certificate from './views/Certificate'
+import PhoneNum from './views/PhoneNum'
+import City from './views/city'
 import store from 'store/index'
 Vue.use(Router)
 const router = new Router({
@@ -16,6 +18,16 @@ const router = new Router({
             path: '/certificate',
             name: 'certificate',
             component: Certificate
+        },
+        {
+            path: '/phone',
+            name: 'phone',
+            component: PhoneNum
+        },
+        {
+            path: '/city',
+            name: 'city',
+            component: City
         },
         // {
         //     path: '/',

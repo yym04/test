@@ -4,22 +4,33 @@
         <div class="main-form">
             <p class="form-title">您好，请完善个人信息</p>
             <p class="form-title-sub">最多8个汉字，不支持特殊字符</p>
-            <form class="form">
+            <form class="m-form">
                 <div class="form-item">
-                    <input type="text" v-model="name"  class="form-input" placeholder="请输入姓名" style="width: 50%">
-                    <hr/>
+                    <input type="text" v-model="name"  class="form-input" placeholder="请输入姓名" >
+                    <!--<hr/>-->
                 </div>
                 <div class="form-item">
-                    <input type="text" v-model="idCard"  class="form-input" placeholder="请输入证件号码" style="width: 70%" >
-                    <hr/>
+                    <input type="text" v-model="idCard"  class="form-input" placeholder="请输入证件号码" >
                 </div>
                 <p class="tips">为保障您的个人隐私权益，请在点击同意按钮前认真阅读并勾选同意下方协议</p>
+                <p class="tips">
+                    <span>
+                         <input type="checkbox"  value="" id="checkbox1">
+                        <label for="checkbox1">《保密协议》</label>
+                    </span>
+                    <span>
+                        <input type="checkbox"  value="" id="checkbox2">
+                        <label for="checkbox2">《职务职责》&nbsp;《权益介绍》</label>
+                    </span>
+                </p>
+                <SubmitBtn text="下一步" toLink="/phone"/>
             </form>
         </div>
     </div>
 </template>
 <script>
 import PageHeader from '../components/PageHeader'
+import SubmitBtn from '../components/SubmitBtn'
 export default {
     name: 'Certificate',
     data() {
@@ -29,34 +40,9 @@ export default {
         }
     },
     components: {
-        PageHeader
+        PageHeader, SubmitBtn
     }
 }
 </script>
 <style scoped lang="scss">
-    .form{
-        display: flex;
-        flex-direction: column;
-        .form-item{
-            margin-top: 24px;
-            input{
-                border: none;
-                &::-webkit-input-placeholder{
-                    color: $light-gray;
-                    font-size: 15px;
-                }
-            }
-            hr{
-                width: 100%;
-                border: 0.5px solid #FF5500;
-                margin-top: 10px;
-            }
-        }
-        .tips{
-            color: $light-gray;
-            font-size: 12px;
-            margin-top: 22px;
-            line-height: 16.5px;
-        }
-    }
 </style>
