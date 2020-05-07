@@ -16,16 +16,7 @@ export default {
     },
     methods: {
         OnSubmit() {
-            // 全部验证
-            this.$validator.validateAll().then((result) => {
-                if (result) {
-                    console.log('全部正确')
-                } else {
-                    console.log('有错误的哦')
-                }
-            })
-            // return
-            // this.$router.push(this.toLink)
+            return this.$router.push(this.toLink)
         }
     }
 }

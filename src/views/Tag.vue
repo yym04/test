@@ -6,11 +6,11 @@
             <p class="form-title">您认为自己满足哪些标签？</p>
             <p class="form-title-sub">选择不小于2项</p>
             <div class="tag-box">
-                <div class="tag"><p class="tag-name">传统</p></div>
-                <div class="tag"><p class="tag-name">精打细算</p></div>
-                <div class="tag"><p class="tag-name">宅</p></div>
-                <div class="tag"><p class="tag-name">积极向上</p></div>
-                <div class="tag"><p class="tag-name">有责任感</p></div>
+                <div class="tag" :class="{active:isActive}" @click="handleClick(e)"><p class="tag-name">传统</p></div>
+                <div class="tag" :class="{active:isActive}" @click="isActive =!isActive"><p class="tag-name">精打细算</p></div>
+                <div class="tag" :class="{active:isActive}" @click="isActive =!isActive"><p class="tag-name">宅</p></div>
+                <div class="tag" :class="{active:isActive}" @click="isActive =!isActive"><p class="tag-name">积极向上</p></div>
+                <div class="tag" :class="{active:isActive}" @click="isActive =!isActive"><p class="tag-name">有责任感</p></div>
                 <!--占位-->
                 <div class="tag_empty"></div>
                 <div class="tag_empty"></div>
@@ -25,10 +25,16 @@ import PageHeader from '../components/PageHeader'
 import SubmitBtn from '../components/SubmitBtn'
 export default {
     data() {
-        return {}
+        return {
+            isActive: false
+        }
     },
     components: {
         PageHeader, SubmitBtn
+    },
+    methods: {
+        handleClick(e){
+        }
     }
 }
 </script>
@@ -54,6 +60,12 @@ export default {
                 color: #262626;
                 text-align: center;
                 line-height: 36px;
+            }
+            &.active{
+                color: $active-color;
+                font-weight: bold;
+                border: 0.5px solid $active-color;
+                background-color: #EFF3FF;
             }
         }
         .tag_empty{

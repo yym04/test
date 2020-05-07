@@ -208,11 +208,12 @@ $--transition-time: 350ms;
         padding-bottom: 10px;
         border: none;
         border-bottom: 1px solid #F0F0F0;
-        font: bold 15px "DIN Alternate";
+        font: normal 15px "DIN Alternate";
         color: #222222;
         &::-webkit-input-placeholder{
           color: $light-gray;
           font-size: 15px;
+          font-weight: normal;
         }
         &:focus{
           color: #222222;
@@ -222,9 +223,9 @@ $--transition-time: 350ms;
         }
       }
       span{
-        padding-top: 10px;
+        padding-top: 8px;
         font: 12px '苹方-简';
-        color: $color-main;
+        color: #FF5500;
       }
     }
     .tips{
