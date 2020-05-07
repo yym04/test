@@ -6,11 +6,11 @@
             <p class="form-title-sub">最多8个汉字，不支持特殊字符</p>
             <form class="m-form" @submit.prevent="onSubmit">
                 <div class="form-item">
-                    <input type="text" v-validate="'required|name'"  name="name" v-model="name" value="name" class="form-input" placeholder="请输入姓名" >
+                    <input type="text" v-validate="'required|name'"  name="name" v-model="name"  class="form-input" placeholder="请输入姓名" >
                     <span v-show="errors.has('name')">{{ errors.first('name') }}</span>
                 </div>
                 <div class="form-item">
-                    <input type="text" v-validate="'required|idCard'" name="idCard" v-model="idCard" value="idCard" class="form-input" placeholder="请输入证件号码" >
+                    <input type="text" v-validate="'required|idCard'" name="idCard" v-model="idCard" class="form-input" placeholder="请输入证件号码" >
                     <span v-show="errors.has('idCard')">{{ errors.first('idCard') }}</span>
                 </div>
                 <p class="tips">为保障您的个人隐私权益，请在点击同意按钮前认真阅读并勾选同意下方协议</p>
@@ -33,7 +33,7 @@
 import validate from '../mixins/validate'
 import PageHeader from '../components/PageHeader'
 import SubmitBtn from '../components/SubmitBtn'
-import { mapState } from 'vuex'
+// import { mapState } from 'vuex'
 
 export default {
     name: 'Certificate',
@@ -41,18 +41,21 @@ export default {
     data() {
         return {
             name: '',
-            // idCard: '',
+            idCard: '',
             isAgreee: false
         }
     },
     computed: {
-        ...mapState(['username', 'idCard']), // 拿state里面的数据
+        // ...mapState(['username', 'idCard']), // 拿state里面的数据
         anyEmpty: function() {
             // 非空验证： 是否有未填的必填项 ture:有; false:没有
             return !this.name || !this.idCard
         }
     },
     created() {
+        // 拿到state里面的姓名和身份证号码
+        this.name = this.$store.state.username;
+        this.idCard = this.$store.state.idCard
     },
     methods: {
         onSubmit: function() {
