@@ -6,11 +6,12 @@
             <p class="form-title-sub">最多8个汉字，不支持特殊字符</p>
             <form class="m-form">
                 <div class="form-item">
-                    <input type="text" v-model="name"  class="form-input" placeholder="请输入姓名" >
-                    <!--<hr/>-->
+                    <input type="text" v-validate="'required|name'"  name="name" v-model="name"  class="form-input" placeholder="请输入姓名" >
+                    <span v-show="errors.has('name')">{{ errors.first('name') }}</span>
                 </div>
                 <div class="form-item">
-                    <input type="text" v-model="idCard"  class="form-input" placeholder="请输入证件号码" >
+                    <input type="text" v-validate="'required|idCard'" name="idCard" v-model="idCard"  class="form-input" placeholder="请输入证件号码" >
+                    <span v-show="errors.has('idCard')">{{ errors.first('idCard') }}</span>
                 </div>
                 <p class="tips">为保障您的个人隐私权益，请在点击同意按钮前认真阅读并勾选同意下方协议</p>
                 <p class="tips">
@@ -23,7 +24,7 @@
                         <label for="checkbox2"><a href="">《职务职责》</a>&nbsp;<a href="">《权益介绍》</a></label>
                     </span>
                 </p>
-                <SubmitBtn text="下一步" toLink="/phone"/>
+                <SubmitBtn text="下一步" toLink="/phone" :is-disabled="errors.any()" :anyEmpty="anyEmpty"/>
             </form>
         </div>
     </div>
@@ -37,6 +38,15 @@ export default {
         return {
             name: '',
             idCard: ''
+        }
+    },
+    created() {
+        // 创建组件后，把提交按钮的样式改成不可点击
+    },
+    computed: {
+        anyEmpty: function() {
+            // 非空验证： 是否有未填的必填项 ture:有; false:没有
+            return !this.name || !this.idCard
         }
     },
     components: {

@@ -93,6 +93,9 @@ export default {
             border-radius: 6px;
             color: #FFFFFF;
             background-color: $color-main;
+            &:active{
+                background-color: $active-color;
+            }
         }
         .isDisabled{
         }
