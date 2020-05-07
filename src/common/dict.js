@@ -9,7 +9,8 @@ const dict = {
         },
         attributes: {
             name: '姓名',
-            phone: '手机号码'
+            phone: '手机号码',
+            isAgreee: '保密协议'
         }
     }
 };

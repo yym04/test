@@ -1,5 +1,7 @@
 <template>
-    <button type="submit" class="submit_btn" :class="{active : !isDisabled&&!anyEmpty }" :disabled="isDisabled && anyEmpty"  @click="OnSubmit" >{{text}}
+    <button type="submit" class="submit_btn"
+            :class="{active : !isDisabled&&!anyEmpty }"
+            :disabled="isDisabled || anyEmpty">{{text}}
     </button>
 </template>
 
@@ -15,9 +17,6 @@ export default {
         anyEmpty: Boolean // 是否有未填的必填项 ture:有; false:没有
     },
     methods: {
-        OnSubmit() {
-            return this.$router.push(this.toLink)
-        }
     }
 }
 </script>
