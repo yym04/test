@@ -1,5 +1,6 @@
 <template>
-    <button class="submit_btn"  @click="OnSubmit">{{text}}</button>
+    <button class="submit_btn"  @click="OnSubmit">{{text}}
+    </button>
 </template>
 
 <script>
@@ -31,7 +32,7 @@ export default {
         background-color: $color-main;
         text-align: center;
         vertical-align: center;
-        line-height: 21px;
+        line-height: 45px;
         border: none;
         border-radius: 6px;
     }

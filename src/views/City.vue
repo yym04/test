@@ -6,15 +6,19 @@
             <p class="form-title-sub">选择城市地址提交</p>
             <form class="m-form">
                 <div class="form-item">
-                    <button class="choose-city" @click="showPicker = !showPicker"></button>
+                    <button class="choose-city" v-if="!showPicker" @click="showPicker = !showPicker"></button>
                     <input type="text"  v-model="city"  class="form-input" placeholder="请选择城市" >
                 </div>
-                <SubmitBtn text="提交报名" toLink="/"/>
+                <SubmitBtn text="提交报名" toLink="/tag"/>
             </form>
         </div>
         <div class="city-picker">
             <transition name="pull-up" >
-                <van-picker v-if="showPicker"  show-toolbar title="请选择城市" :columns="columns" />
+                <van-picker v-if="showPicker"  show-toolbar title="请选择城市"
+                            :columns="columns"
+                            @confirm="onConfirm"
+                            @cancel="onCancel"
+                            @change="onChange"/>
             </transition>
         </div>
     </div>
@@ -59,6 +63,20 @@ export default {
     },
     components: {
         PageHeader, SubmitBtn
+    },
+    methods: {
+        onConfirm(value, index) {
+            console.log('confirm....');
+            console.log(value) // ["浙江", "杭州", "西湖区"]
+            this.showPicker = false
+        },
+        onCancel() {
+            console.log('cancel....')
+            this.showPicker = false
+        },
+        onChange(pick, value, index) {
+            console.log('change')
+        }
     }
 }
 </script>
@@ -84,7 +102,7 @@ export default {
         transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
     }
     .pull-up-enter, .pull-up-leave-to
-        /* .slide-fade-leave-active for below version 2.1.8 */ {
+        {
         transform: translateY(10px);
         opacity: 0;
     }

@@ -4,7 +4,12 @@ import Router from 'vue-router'
 import Index from './views/Index'
 import Certificate from './views/Certificate'
 import PhoneNum from './views/PhoneNum'
-import City from './views/city'
+import City from './views/City'
+import Tag from './views/Tag'
+import Credential from './views/Credential'
+import Confidentiality from './views/agreements/confidentiality'
+import Duty from './views/agreements/duty'
+import Rights from './views/agreements/rights'
 import store from 'store/index'
 Vue.use(Router)
 const router = new Router({
@@ -28,6 +33,31 @@ const router = new Router({
             path: '/city',
             name: 'city',
             component: City
+        },
+        {
+            path: '/tag',
+            name: 'tag',
+            component: Tag
+        },
+        {
+            path: '/credential',
+            name: 'credential',
+            component: Credential
+        },
+        {
+            path: '/confidentiality',
+            name: 'confidentiality',
+            component: Confidentiality
+        },
+        {
+            path: '/duty',
+            name: 'duty',
+            component: Duty
+        },
+        {
+            path: '/rights',
+            name: 'rights',
+            component: Rights
         },
         // {
         //     path: '/',

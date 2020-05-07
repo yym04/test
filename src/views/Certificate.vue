@@ -16,11 +16,11 @@
                 <p class="tips">
                     <span>
                          <input type="checkbox"  value="" id="checkbox1">
-                        <label for="checkbox1">《保密协议》</label>
+                        <label for="checkbox1"><a href="#/confidentiality">《保密协议》</a></label>
                     </span>
                     <span>
                         <input type="checkbox"  value="" id="checkbox2">
-                        <label for="checkbox2">《职务职责》&nbsp;《权益介绍》</label>
+                        <label for="checkbox2"><a href="">《职务职责》</a>&nbsp;<a href="">《权益介绍》</a></label>
                     </span>
                 </p>
                 <SubmitBtn text="下一步" toLink="/phone"/>

@@ -222,9 +222,12 @@ $--transition-time: 350ms;
       font-size: 12px;
       margin-top: 22px;
       line-height: 16.5px;
-      label{
+      label a{
         color: #1D4889;
         padding-right: 16px;
+        &:visited{
+          color: $color-main;
+        }
       }
     }
   }
