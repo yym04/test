@@ -34,6 +34,16 @@ Validator.extend('phone', {
     }
 });
 
+// 验证码验证
+Validator.extend('code', {
+    messages: {
+        zh_CN: field => field + '必须是4位数字'
+    },
+    validate: value => {
+        return /^\d{4}$/.test(value)
+    }
+});
+
 Validator.extend('pass', {
     messages: {
         zh_CN: field => field + '6-16位由字母、数字、特殊符号两两组成'

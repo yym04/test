@@ -12,7 +12,6 @@ export default {
     },
     props: {
         text: String,
-        toLink: String, // t挑战至哪个页面
         isDisabled: Boolean,
         anyEmpty: Boolean // 是否有未填的必填项 ture:有; false:没有
     },
