@@ -48,7 +48,7 @@ export default {
             // 改变 tag 的样式
             let className = e.target.className
             console.log(className)
-            if (className === 'tag-box'){
+            if (className === 'tag-box') {
                 return
             }
             if (className.indexOf('active') !== -1) {

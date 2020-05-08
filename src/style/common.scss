@@ -102,7 +102,7 @@ body,p,h1,h2,h3,h4,h5,h6,dl,dd{margin:0;font-size:12px;font-family:$font-family-
 ol,ul{list-style:none;padding:0;margin:0;}
 input,button,select,textarea{outline:none}
 img{border:none;}
-a{text-decoration:none;}
+//a{text-decoration:none;}
 //改变复选框的样式
 input[type="checkbox"]{
   visibility: hidden;
@@ -110,14 +110,15 @@ input[type="checkbox"]{
     visibility:visible;
     content: '';
     display: inline-block;
-    border: 2px solid #CCCCCC;
+    border: 0.5px solid #CCCCCC;
     border-radius: 50%;
     width: 12px;
     height: 12px;
   }
   &:checked{
     &::before{
-      background-color: #999999;
+      background-color: $active-color;
+      border: none;
     }
   }
 }
@@ -237,7 +238,8 @@ $--transition-time: 350ms;
         color: $color-main;
         padding-right: 16px;
         &:visited{
-          color: $active-color;
+          color: #1D4889;
+          text-decoration: underline !important;
         }
       }
     }
