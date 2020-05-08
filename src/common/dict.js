@@ -9,6 +9,7 @@ const dict = {
         },
         attributes: {
             name: '姓名',
+            idCard: '身份证号码',
             phone: '手机号码',
             isAgree: '保密协议',
             code: '验证码'

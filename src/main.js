@@ -35,6 +35,30 @@ Object.keys(filters).forEach(item => {
 // })
 Vue.config.productionTip = false
 Vue.config.devtools = true
+
+/*  全局自定义指令 */
+
+// 自动获取焦点
+Vue.directive('autoFocus', {
+    inserted(el) {
+        el.focus()
+    }
+})
+
+// 防止重复点击提交
+Vue.directive('preventReclick', {
+    bind(el, binding) {
+        el.addEventListener('click', function() {
+            if (!el.disabled) {
+                el.disabled = true
+                setTimeout(() => {
+                    el.disabled = false
+                }, binding.value || 2000)
+            }
+        })
+    }
+})
+
 new Vue({
     router,
     store,

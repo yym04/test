@@ -6,7 +6,7 @@
             <p class="form-title-sub">最多8个汉字，不支持特殊字符</p>
             <form class="m-form" @submit.prevent="onSubmit">
                 <div class="form-item">
-                    <input type="text" v-validate="'required|name'"  name="name" v-model="name"  class="form-input" placeholder="请输入姓名" >
+                    <input type="text" v-validate="'required|name'"  name="name" v-model="name" v-auto-focus class="form-input" placeholder="请输入姓名" >
                     <span v-show="errors.has('name')">{{ errors.first('name') }}</span>
                 </div>
                 <div class="form-item">
@@ -24,7 +24,7 @@
                         <label for="checkbox2"><a href="">《职务职责》</a>&nbsp;<a href="">《权益介绍》</a></label>
                     </span>-->
                 </p>
-                <SubmitBtn text="下一步"  :is-disabled="errors.any()" :anyEmpty="anyEmpty"/>
+                <SubmitBtn text="下一步" :is-disabled="errors.any()" :anyEmpty="anyEmpty"/>
             </form>
         </div>
     </div>
@@ -60,7 +60,8 @@ export default {
         console.log(this.isAgree)
     },
     methods: {
-        onSubmit: function() {
+        onSubmit: function(e) {
+            console.log(e)
             this.validateBeforeSubmit('请勾选保密协议', { isAgree: this.isAgree }).then(() => {
                 return this.$router.push('/phone')
             })
