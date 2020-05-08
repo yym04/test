@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="bottom">
-            <button class="confirm-btn" :class="isDisabled" :disabled="!!seconds"  @click="handleClick">
+            <button class="confirm-btn" :class="{active:isAgree}" :disabled="!!seconds"  @click="handleAgree">
                 <span v-if="seconds">阅读{{seconds}}s后同意《保密协议》</span>
                 <span v-else>同意《保密协议》</span>
             </button>
@@ -29,25 +29,36 @@ import PageHeader from '../../components/PageHeader'
 export default {
     data() {
         return {
-            seconds: 10,
+            seconds: 2,
             isDisabled: {
                 backgroundColor: '#F2F2F2'
-            }
+            },
+            isAgree: false
         }
     },
     components: {
         PageHeader
     },
+    beforeCreate() {
+    },
     created() {
-        this.timer = setInterval(() => {
-            this.seconds--
-            if (this.seconds <= 0) {
-                this.seconds = 0
-                // 清空定时器
-                clearInterval(this.timer)
-                this.timer = null
-            }
-        }, 1000)
+        // 拿缓存中的isAgree
+        this.isAgree = sessionStorage.getItem('isAgree') === 'true' ? true : false;
+        console.log(this.isAgree)
+        // 如果进来之前是未同意状态 强制读10S
+        if (!this.isAgree) {
+            this.timer = setInterval(() => {
+                this.seconds--
+                if (this.seconds <= 0) {
+                    this.seconds = 0
+                    // 清空定时器
+                    clearInterval(this.timer)
+                    this.timer = null
+                }
+            }, 1000)
+        } else {
+            this.seconds = 0
+        }
     },
     beforeDestroy() {
         // 清空定时器
@@ -57,11 +68,12 @@ export default {
         }
     },
     methods: {
-        handleClick() {
-            console.log(11111111111);
-            setTimeout(() => {
-                this.$router.go(-1)
-            }, 1000)
+        handleAgree() {
+            this.isAgree = !this.isAgree;
+            sessionStorage.setItem('isAgree', this.isAgree)
+            // setTimeout(() => {
+            //     this.$router.go(-1)
+            // }, 1000)
         }
     }
 }
@@ -93,11 +105,12 @@ export default {
             border-radius: 6px;
             color: #FFFFFF;
             background-color: $color-main;
+            &.active{
+                background-color: $active-color;
+            }
             &:active{
                 background-color: $active-color;
             }
-        }
-        .isDisabled{
         }
     }
 </style>

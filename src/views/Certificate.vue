@@ -16,7 +16,7 @@
                 <p class="tips">为保障您的个人隐私权益，请在点击同意按钮前认真阅读并勾选同意下方协议</p>
                 <p class="tips">
                     <span>
-                         <input type="checkbox" v-validate="'required'" name="isAgreee" v-model="isAgreee" value="" id="checkbox1">
+                         <input type="checkbox" v-validate="'required'" name="isAgree" v-model="isAgree" value="" id="checkbox1">
                         <label for="checkbox1"><a href="#/confidentiality" @click="onReadC">《保密协议》</a></label>
                     </span>
                     <!--<span>
@@ -24,7 +24,7 @@
                         <label for="checkbox2"><a href="">《职务职责》</a>&nbsp;<a href="">《权益介绍》</a></label>
                     </span>-->
                 </p>
-                <SubmitBtn text="下一步" toLink="/phone" :is-disabled="errors.any()" :anyEmpty="anyEmpty"/>
+                <SubmitBtn text="下一步"  :is-disabled="errors.any()" :anyEmpty="anyEmpty"/>
             </form>
         </div>
     </div>
@@ -42,7 +42,7 @@ export default {
         return {
             name: '',
             idCard: '',
-            isAgreee: false
+            isAgree: false // false表示未同意 ture表示已同意
         }
     },
     computed: {
@@ -55,11 +55,13 @@ export default {
     created() {
         // 拿到state里面的姓名和身份证号码
         this.name = this.$store.state.username;
-        this.idCard = this.$store.state.idCard
+        this.idCard = this.$store.state.idCard;
+        this.isAgree = sessionStorage.getItem('isAgree') === 'true' ? true : false;
+        console.log(this.isAgree)
     },
     methods: {
         onSubmit: function() {
-            this.validateBeforeSubmit('请勾选保密协议', { isAgreee: this.isAgreee }).then(() => {
+            this.validateBeforeSubmit('请勾选保密协议', { isAgree: this.isAgree }).then(() => {
                 return this.$router.push('/phone')
             })
         },
@@ -67,6 +69,7 @@ export default {
             // 保存姓名和身份证号
             // dispacth action 中的saveNameIdCard 从而改变state
             this.$store.dispatch('saveNameIdCard', { username: this.name, idCard: this.idCard })
+            sessionStorage.setItem('isAgree', this.isAgree)
         }
     },
     components: {

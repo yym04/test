@@ -10,7 +10,8 @@ const dict = {
         attributes: {
             name: '姓名',
             phone: '手机号码',
-            isAgreee: '保密协议'
+            isAgree: '保密协议',
+            code: '验证码'
         }
     }
 };

@@ -4,12 +4,13 @@
         <div class="main-form">
             <p class="form-title">选择您所在的城市</p>
             <p class="form-title-sub">选择城市地址提交</p>
-            <form class="m-form">
+            <form class="m-form" @submit.prevent="onSubmit">
                 <div class="form-item">
-                    <button class="choose-city" v-if="!showPicker" @click="showPicker = !showPicker"></button>
-                    <input type="text"  v-model="city"  class="form-input" placeholder="请选择城市" >
+                    <a class="choose-city" v-if="!showPicker" @click="showPicker = !showPicker"></a>
+                    <input type="text" v-validate="'required'" name="city"  v-model="city"  class="form-input city-name" placeholder="请选择城市" >
+                    <span v-show="errors.has('city')">{{ errors.first('city') }}</span>
                 </div>
-                <SubmitBtn text="提交报名" toLink="/tag"/>
+                <SubmitBtn text="提交报名" :is-disabled="errors.any()" :anyEmpty="anyEmpty" />
             </form>
         </div>
         <div class="city-picker">
@@ -24,9 +25,12 @@
     </div>
 </template>
 <script>
+import validate from '../mixins/validate'
 import PageHeader from '../components/PageHeader'
 import SubmitBtn from '../components/SubmitBtn'
 export default {
+    name: 'city',
+    mixins: [validate],
     data() {
         return {
             city: '',
@@ -61,21 +65,30 @@ export default {
             ]
         }
     },
+    computed: {
+        anyEmpty: function() {
+            // 非空验证： 是否有未填的必填项 ture:有; false:没有
+            return !this.city
+        }
+    },
     components: {
         PageHeader, SubmitBtn
     },
     methods: {
+        onSubmit() {
+            this.validateBeforeSubmit('请选择城市！').then(() => {
+                return this.$router.push('/tag')
+            })
+        },
         onConfirm(value, index) {
             console.log('confirm....');
+            this.city = value;
             console.log(value) // ["浙江", "杭州", "西湖区"]
             this.showPicker = false
         },
         onCancel() {
             console.log('cancel....')
             this.showPicker = false
-        },
-        onChange(pick, value, index) {
-            console.log('change')
         }
     }
 }
@@ -89,6 +102,10 @@ export default {
         border: none;
         background-color: #FFFFFF;
         @include bg_image("../assets/pictures/city_right")
+    }
+    .city-name{
+        cursor: not-allowed;
+        pointer-events: none;
     }
     .van-picker{
         bottom: -120px;
