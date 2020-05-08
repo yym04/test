@@ -145,8 +145,8 @@ module.exports = {
     productionSourceMap: false,
     devServer: {
         open: true, // 启动服务后是否打开浏览器
-        host: '192.168.0.197',
-        // host: '192.168.2.154',
+        // host: '192.168.0.197',
+        host: '192.168.2.154',
         port: 8088, // 服务端口
         https: false,
         hotOnly: false,
