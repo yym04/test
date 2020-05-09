@@ -1,27 +1,29 @@
 <template>
     <div>
         <PageHeader title="请选择城市"/>
-        <div class="main-form">
-            <p class="form-title">选择您所在的城市</p>
-            <p class="form-title-sub">选择城市地址提交</p>
-            <form class="m-form" @submit.prevent="onSubmit">
-                <div class="form-item">
-                    <a class="choose-city" v-if="!showPicker" @click="showPicker = !showPicker"></a>
-                    <input type="text" v-validate="'required'" name="city"  v-model="city"  class="form-input city-name" placeholder="请选择城市" >
-                    <span v-show="errors.has('city')">{{ errors.first('city') }}</span>
-                </div>
-                <SubmitBtn text="提交报名" :is-disabled="errors.any()" :anyEmpty="anyEmpty" />
-            </form>
-        </div>
-        <div class="city-picker">
-            <transition name="pull-up" >
-                <van-picker v-if="showPicker"  show-toolbar title="请选择城市"
-                            :columns="columns"
-                            @confirm="onConfirm"
-                            @cancel="onCancel"
-                            @change="onChange"/>
-            </transition>
-        </div>
+        <main>
+            <div class="main-form">
+                <p class="form-title">选择您所在的城市</p>
+                <p class="form-title-sub">选择城市地址提交</p>
+                <form class="m-form" @submit.prevent="onSubmit">
+                    <div class="form-item">
+                        <a class="choose-city" v-if="!showPicker" @click="showPicker = !showPicker"></a>
+                        <input type="text" v-validate="'required'" name="city"  v-model="city" class="form-input city-name" placeholder="请选择城市" >
+                        <span v-show="errors.has('city')">{{ errors.first('city') }}</span>
+                    </div>
+                    <SubmitBtn text="提交报名" :is-disabled="!city" />
+                </form>
+            </div>
+            <div class="city-picker">
+                <transition name="pull-up" >
+                    <van-picker v-if="showPicker"  show-toolbar title="请选择城市"
+                                :columns="columns"
+                                @confirm="onConfirm"
+                                @cancel="onCancel"
+                                @change="onChange"/>
+                </transition>
+            </div>
+        </main>
     </div>
 </template>
 <script>
@@ -66,10 +68,6 @@ export default {
         }
     },
     computed: {
-        anyEmpty: function() {
-            // 非空验证： 是否有未填的必填项 ture:有; false:没有
-            return !this.city
-        }
     },
     components: {
         PageHeader, SubmitBtn

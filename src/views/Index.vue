@@ -1,9 +1,11 @@
 <template>
     <div>
         <PageHeader title="体验官报名" />
-        <div class="main">
-            <router-link to="/certificate"><button >点击这里 成为体验官</button></router-link>
-        </div>
+        <main>
+            <div class="main">
+                <router-link to="/certificate"><button >点击这里 成为体验官</button></router-link>
+            </div>
+        </main>
     </div>
 </template>
 <script>

@@ -1,25 +1,27 @@
 <template>
     <div>
         <PageHeader title="标签选择"/>
-        <div class="main-form">
-            <p class="form-title">恭喜，成为第 <span class="num">10</span> 位体验官，</p>
-            <p class="form-title">您认为自己满足哪些标签？</p>
-            <p class="form-title-sub">选择不小于2项</p>
-            <form @submit.prevent="nextStep">
-                <div class="tag-box" @click="handleClick">
-                    <div class="tag" >传统</div>
-                    <div class="tag" >精打细算</div>
-                    <div class="tag" >宅</div>
-                    <div class="tag" >积极向上</div>
-                    <div class="tag" >有责任感</div>
-                    <!--占位-->
-                    <div class="tag_empty"></div>
-                    <div class="tag_empty"></div>
-                    <div class="tag_empty"></div>
-                </div>
-                <SubmitBtn text="选好的，进入下一步 >" :is-disabled="isDisabled" />
-            </form>
-        </div>
+        <main>
+            <div class="main-form">
+                <p class="form-title">恭喜，成为第 <span class="num">10</span> 位体验官，</p>
+                <p class="form-title">您认为自己满足哪些标签？</p>
+                <p class="form-title-sub">选择不小于2项</p>
+                <form @submit.prevent="nextStep">
+                    <div class="tag-box" @click="handleClick">
+                        <div class="tag" >传统</div>
+                        <div class="tag" >精打细算</div>
+                        <div class="tag" >宅</div>
+                        <div class="tag" >积极向上</div>
+                        <div class="tag" >有责任感</div>
+                        <!--占位-->
+                        <div class="tag_empty"></div>
+                        <div class="tag_empty"></div>
+                        <div class="tag_empty"></div>
+                    </div>
+                    <SubmitBtn text="选好的，进入下一步 >" :is-disabled="isDisabled" />
+                </form>
+            </div>
+        </main>
     </div>
 </template>
 <script>

@@ -25,7 +25,10 @@ export default {
     header{
         width: 100vw;
         height: 44px;
+        background-color: #FFFFFF;
         border: 1px solid #E8E8E8;
+        position: fixed;
+        top: 0;
         .back{
             float: left;
             top:50%;

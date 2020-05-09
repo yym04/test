@@ -1,7 +1,7 @@
 <template>
     <button type="submit" class="submit_btn"
-            :class="{active : !isDisabled&&!anyEmpty }"
-            :disabled="isDisabled || anyEmpty">{{text}}
+            :class="{active : !isDisabled }"
+            :disabled="isDisabled ">{{text}}
     </button>
 </template>
 
@@ -13,7 +13,6 @@ export default {
     props: {
         text: String,
         isDisabled: Boolean,
-        anyEmpty: Boolean // 是否有未填的必填项 ture:有; false:没有
     },
     methods: {
     }

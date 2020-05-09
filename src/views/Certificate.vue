@@ -1,32 +1,34 @@
 <template>
     <div>
         <PageHeader title="体验官报名"></PageHeader>
-        <div class="main-form">
-            <p class="form-title">您好，请完善个人信息</p>
-            <p class="form-title-sub">最多8个汉字，不支持特殊字符</p>
-            <form class="m-form" @submit.prevent="onSubmit">
-                <div class="form-item">
-                    <input type="text" v-validate="'required|name'"  name="name" v-model="name" v-auto-focus class="form-input" placeholder="请输入姓名" >
-                    <span v-show="errors.has('name')">{{ errors.first('name') }}</span>
-                </div>
-                <div class="form-item">
-                    <input type="text" v-validate="'required|idCard'" name="idCard" v-model="idCard" class="form-input" placeholder="请输入证件号码" >
-                    <span v-show="errors.has('idCard')">{{ errors.first('idCard') }}</span>
-                </div>
-                <p class="tips">为保障您的个人隐私权益，请在点击同意按钮前认真阅读并勾选同意下方协议</p>
-                <p class="tips">
+        <main>
+            <div class="main-form">
+                <p class="form-title">您好，请完善个人信息</p>
+                <p class="form-title-sub">最多8个汉字，不支持特殊字符</p>
+                <form class="m-form" @submit.prevent="onSubmit">
+                    <div class="form-item">
+                        <input type="text" v-validate="'required|name'"  name="name" v-model="name" v-auto-focus class="form-input" placeholder="请输入姓名" >
+                        <span v-show="errors.has('name')">{{ errors.first('name') }}</span>
+                    </div>
+                    <div class="form-item">
+                        <input type="text" v-validate="'required|idCard'" name="idCard" v-model="idCard" class="form-input" placeholder="请输入证件号码" >
+                        <span v-show="errors.has('idCard')">{{ errors.first('idCard') }}</span>
+                    </div>
+                    <p class="tips">为保障您的个人隐私权益，请在点击同意按钮前认真阅读并勾选同意下方协议</p>
+                    <p class="tips">
                     <span>
                          <input type="checkbox" v-validate="'required'" name="isAgree" v-model="isAgree" value="" id="checkbox1">
                         <label for="checkbox1"><a href="#/confidentiality" @click="onReadC">《保密协议》</a></label>
                     </span>
-                    <!--<span>
-                        <input type="checkbox"  value="" id="checkbox2">
-                        <label for="checkbox2"><a href="">《职务职责》</a>&nbsp;<a href="">《权益介绍》</a></label>
-                    </span>-->
-                </p>
-                <SubmitBtn text="下一步" :is-disabled="errors.any()" :anyEmpty="anyEmpty"/>
-            </form>
-        </div>
+                        <!--<span>
+                            <input type="checkbox"  value="" id="checkbox2">
+                            <label for="checkbox2"><a href="">《职务职责》</a>&nbsp;<a href="">《权益介绍》</a></label>
+                        </span>-->
+                    </p>
+                    <SubmitBtn text="下一步" :is-disabled="errors.any()" />
+                </form>
+            </div>
+        </main>
     </div>
 </template>
 <script>
@@ -47,10 +49,6 @@ export default {
     },
     computed: {
         // ...mapState(['username', 'idCard']), // 拿state里面的数据
-        anyEmpty: function() {
-            // 非空验证： 是否有未填的必填项 ture:有; false:没有
-            return !this.name || !this.idCard
-        }
     },
     created() {
         // 拿到state里面的姓名和身份证号码
